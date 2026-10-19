@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AIS Sail Race Support</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="icon.png" />
+</head>
+<body>
+  <main>
+    <header class="app"><img src="icon.png" alt="" /><a href="index.html">AIS Sail Race</a></header>
+    <nav><a href="index.html">Home</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav>
+    <h1>Support</h1>
+    <p>Questions, a gateway that won't connect, or an idea for the app? Email <a href="mailto:braznichenko@gmail.com?subject=AIS%20Sail%20Race">braznichenko@gmail.com</a>.</p>
+    <h2>I see no boats</h2>
+    <p>Internet AIS only hears boats within range of a shore receiver, usually 20 to 40 nautical miles from the coast, and the feed is sparser than a boat's own receiver. Many small boats carry Class B AIS, which reports every 30 seconds while moving. Offshore, use the boat network (below). To try the app with no boats around, turn on <strong>Settings &rarr; Demo fleet</strong>.</p>
+    <h2>Connecting to the boat</h2>
+    <p>Join the boat's Wi-Fi, then turn on <strong>Settings &rarr; Boat network</strong> and pick a preset:</p>
+    <ul>
+      <li>B&amp;G, Simrad, Lowrance (GoFree): TCP 10110 at the plotter's address (often the Wi-Fi's gateway, for example 192.168.76.1 on a Zeus 3S hotspot).</li>
+      <li>Yacht Devices gateways: TCP or UDP 1456.</li>
+      <li>Vesper, Digital Yacht and em-trak AIS with Wi-Fi: TCP 39150 or as their manual says.</li>
+      <li>Any gateway broadcasting NMEA 0183 over UDP: choose UDP and its port.</li>
+    </ul>
+    <p>The app reads <code>!AIVDM</code> AIS targets, your position (RMC/GGA/GLL, VTG) and true wind (MWD, or MWV true with HDT/HDG).</p>
+    <h2>How tacks are worked out</h2>
+    <p>Each boat's course over ground is compared with the true wind: wind over the starboard side is starboard tack. A change of tack has to show in two reports at least 25 seconds apart before it counts. The wind is, in order of preference: your instruments, a wind you set, the wind implied by the fleet's tacking angles, then the forecast. Course over ground includes leeway and current, which boats near each other share, so comparisons between them stay fair.</p>
+    <h2>Gains</h2>
+    <p>With a mark set, gains are measured toward the mark. Without one, on an upwind leg they are measured toward the wind, and downwind away from it, over the last 15 minutes.</p>
+    <footer><p>&copy; 2026 Dimitry Braznichenko. AIS Sail Race is a racing aid, not a navigation instrument: AIS reports can be late, missing or wrong. Keep a proper lookout.</p></footer>
+  </main>
+</body>
+</html>
