@@ -3,32 +3,35 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AIS Sail Race Support</title>
+  <title>AIS Sail Race Help</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="icon.png" />
 </head>
 <body>
+  <div class="bar">
+    <a class="brand" href="index.html"><img src="icon.png" alt="" />AIS Sail Race</a>
+    <nav><a href="index.html">The app</a><a href="support.html" aria-current="page">Help</a><a href="privacy.html">Privacy</a></nav>
+  </div>
   <main>
-    <header class="app"><img src="icon.png" alt="" /><a href="index.html">AIS Sail Race</a></header>
-    <nav><a href="index.html">Home</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></nav>
-    <h1>Support</h1>
-    <p>Questions, a gateway that won't connect, or an idea for the app? Email <a href="mailto:braznichenko@gmail.com?subject=AIS%20Sail%20Race">braznichenko@gmail.com</a>.</p>
-    <h2>I see no boats</h2>
-    <p>Internet AIS only hears boats within range of a shore receiver, usually 20 to 40 nautical miles from the coast, and the feed is sparser than a boat's own receiver. Many small boats carry Class B AIS, which reports every 30 seconds while moving. Offshore, use the boat network (below). To try the app with no boats around, turn on <strong>Settings &rarr; Demo fleet</strong>.</p>
-    <h2>Connecting to the boat</h2>
-    <p>Join the boat's Wi-Fi, then turn on <strong>Settings &rarr; Boat network</strong> and pick a preset:</p>
+    <div class="kicker">Help</div>
+    <h1>Getting the fleet on screen</h1>
+    <p>Something not working, or an idea? Write to <a href="mailto:braznichenko@gmail.com?subject=AIS%20Sail%20Race">braznichenko@gmail.com</a>.</p>
+    <div class="panel"><h2>No boats showing</h2>
+    <p>Shore AIS only hears boats within range of a receiver on land, usually 20 to 40 nautical miles off the coast, and it is sparser than a receiver on your own boat. Class B transponders, which most small boats carry, report every 30 seconds while moving. Offshore, use the boat network below. To see every screen with nobody around, turn on <strong>Setup &rarr; Demo race</strong>.</p></div>
+    <div class="panel"><h2>Connecting to the boat</h2>
+    <p>Join the boat's Wi-Fi, turn on <strong>Setup &rarr; Boat network</strong> and pick a preset:</p>
     <ul>
-      <li>B&amp;G, Simrad, Lowrance (GoFree): TCP 10110 at the plotter's address (often the Wi-Fi's gateway, for example 192.168.76.1 on a Zeus 3S hotspot).</li>
+      <li>B&amp;G, Simrad, Lowrance (GoFree): TCP 10110 at the plotter's address (often the Wi-Fi gateway, for example 192.168.76.1 on a Zeus 3S hotspot).</li>
       <li>Yacht Devices gateways: TCP or UDP 1456.</li>
-      <li>Vesper, Digital Yacht and em-trak AIS with Wi-Fi: TCP 39150 or as their manual says.</li>
+      <li>Vesper, Digital Yacht and em-trak AIS with Wi-Fi: TCP 39150, or as the manual says.</li>
       <li>Any gateway broadcasting NMEA 0183 over UDP: choose UDP and its port.</li>
     </ul>
-    <p>The app reads <code>!AIVDM</code> AIS targets, your position (RMC/GGA/GLL, VTG) and true wind (MWD, or MWV true with HDT/HDG).</p>
-    <h2>How tacks are worked out</h2>
-    <p>Each boat's course over ground is compared with the true wind: wind over the starboard side is starboard tack. A change of tack has to show in two reports at least 25 seconds apart before it counts. The wind is, in order of preference: your instruments, a wind you set, the wind implied by the fleet's tacking angles, then the forecast. Course over ground includes leeway and current, which boats near each other share, so comparisons between them stay fair.</p>
-    <h2>Gains</h2>
-    <p>With a mark set, gains are measured toward the mark. Without one, on an upwind leg they are measured toward the wind, and downwind away from it, over the last 15 minutes.</p>
-    <footer><p>&copy; 2026 Dimitry Braznichenko. AIS Sail Race is a racing aid, not a navigation instrument: AIS reports can be late, missing or wrong. Keep a proper lookout.</p></footer>
+    <p>The app reads <code>!AIVDM</code> targets, your position (<code>RMC</code>, <code>GGA</code>, <code>GLL</code>, <code>VTG</code>) and the true wind (<code>MWD</code>, or <code>MWV</code> true with a heading).</p></div>
+    <div class="panel"><h2>How crossings are predicted</h2>
+    <p>Both boats are projected forward on their present speed and course over ground, and the app finds the moment they are closest. Meetings within 600 m in the next 20 minutes are listed. Inside 150 m it adds the racing-rules call for the simple cases: opposite tacks, the port-tack boat keeps clear (rule 10); same tack, the windward boat keeps clear (rule 11). A tack, a shift or a late AIS report changes the picture, so treat it as a heads-up, not a ruling.</p></div>
+    <div class="panel"><h2>How tacks and gains are worked out</h2>
+    <p>Each boat's course over ground is compared with the true wind: wind over the starboard side is starboard tack, and a change has to show in two reports at least 25 seconds apart. The wind is, in order: your instruments, a wind you set, the wind the fleet's tacking angles show, then the forecast. With a mark set, gains are measured toward it; without one, toward the wind upwind and away from it downwind, over the last 15 minutes. Leverage is the change in that measure if the wind turned 10&deg; either way.</p></div>
   </main>
+  <footer>Dimitry Braznichenko, 2026. A racing aid, not a navigation instrument. AIS reports can be late, missing or wrong: keep a proper lookout.</footer>
 </body>
 </html>
